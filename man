@@ -51,6 +51,10 @@ public class Man {
         return dad;
     }
 
+    public String toString() {
+        return String.format("%s %s %s", getSecond(), getFirst(), getThee()).trim();
+    }
+
     public void setName(Name name) {
         // check check = new check();
         // if (name == null) {
