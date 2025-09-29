@@ -30,6 +30,10 @@ public class City {
         }
     }
 
+    public String toString() {
+        return cityName;
+    }
+
     public void printCity() {
         System.out.print("=== Город " + this.cityName + " связан с городами: \n");
         connect.forEach((key, value) -> {
