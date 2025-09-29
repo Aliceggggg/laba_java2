@@ -19,6 +19,10 @@ public class Cat {
         return String.format("Кот: %s", cat);
     }
 
+    public String toString() {
+        return String.format(cat);
+    }
+
     public String meow() {
         return String.format("%s: мяу!", cat);
     } 
