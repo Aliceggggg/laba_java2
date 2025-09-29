@@ -1,0 +1,39 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class City {
+    private String cityName;
+    private Map<String,Integer> connect;
+
+    public City() {
+        this.cityName = "";
+        this.connect = new HashMap<>();
+    }
+
+    public String getCity() {
+        return cityName;
+    }
+
+    public Map<String,Integer> getConnect() {
+        return new HashMap<>(connect);
+    }
+
+    public void setCity(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public void setConnect(Map<String,Integer> connect) {
+        if (connect == null) {
+            this.connect = new HashMap<>();
+        } else {
+            this.connect = new HashMap<>(connect);
+        }
+    }
+
+    public void printCity() {
+        System.out.print("=== Город " + this.cityName + " связан с городами: \n");
+        connect.forEach((key, value) -> {
+            System.out.println(" - " + key + " : " + value);
+        });
+    }
+}
