@@ -1,0 +1,148 @@
+import java.util.Scanner;
+
+public class Man {
+    private Name name;
+    private int height;
+    private Name dad;
+
+    public Man(String name1, int height, Name dad) {
+        this.name = new Name(name1); 
+        this.height = height;
+        this.dad = dad;
+        ParentThee();
+        ParentSecond();
+    }
+
+    public Man() {
+        this("", 165, new Name(""));
+    }
+
+    public Man(String name1, int height) {
+        this(name1, height, new Name(""));
+    }
+
+    public Man(String name1) {
+        this(name1, 165, new Name(""));
+    }
+
+    public Man(Name name, int height) {
+        this(name.getFullName(), height, new Name(""));
+    }
+
+    public Man(String name1, int height, Man dadMan) {
+        this(name1, height, dadMan != null ? dadMan.getName() : new Name("", "", ""));  
+        ParentThee();
+        ParentSecond();
+    }
+
+    public Name getName() { 
+        return name; 
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public Name getDad() {
+        return dad;
+    }
+
+    public void setName(Name name) {
+        // check check = new check();
+        // if (name == null) {
+        //     this.name = name;
+        // } else {
+        //     String nameValue = name.toString(); 
+        //     String checkedName = check.CheckString(nameValue); 
+        
+        //     // name.setName(checkedName); ???
+        //     this.name = name;
+        // }
+        this.name = name;
+    }
+
+    public void setHeight(int height) {
+        Scanner scanner = new Scanner(System.in);
+        if (30 <= height && height <= 300) {
+            this.height = height;
+        } else {
+            int h = height;
+            while (30 <= h && h <= 300) {
+                System.out.print("Ошибка ввода! Попробуйте ещё раз: ");
+                h = scanner.nextInt();
+                scanner.nextLine();
+            }
+        }
+    }
+
+    public void setDad(Name dad) {
+        this.dad = dad;
+    }
+
+    // @Override
+    public String getInfo () {
+        return String.format("%s, рост: %d", name.getFullName(), height);
+    }
+
+    public String getInfo2 () {
+        return String.format("%s, %d", name.getFullName(), height);
+    }
+
+    public String getWithDad() {
+        return String.format("%s, отец: %s", name.getFullName(), dad.getFullName());
+    }
+
+    public String getInfoWithDad() {
+        return String.format("%s, рост: %d, отец: %s", name.getFullName(), height, dad.getFullName());
+    }
+
+    public void ParentSecond() {
+        if (dad == null || dad.getSecond() == null) {
+            return;
+        }
+        
+        if (name.getSecond() == null || name.getSecond() == "") {
+            this.name.setSecond(this.dad.getSecond());
+        }
+    }
+
+    public void ParentThee() {
+        if (dad == null || dad.getFirst() == null || dad.getFirst() == "") {
+            return;
+        }
+
+        if (name.getThee() == null || name.getThee().isEmpty()) {
+            if ("Лев".equals(dad.getFirst())) {
+                this.name.setThee("Львович");
+            } else if ("Сергей".equals(dad.getFirst())) {
+                this.name.setThee("Сергеевич");
+            } else {
+                this.name.setThee(dad.getFirst() + "ович");
+            }
+        }
+    }
+
+    // public void StringToName(String name1) {
+    //     for (int i = 0; i < name1.length(); i++) {
+    //         while(name1.charAt(i) != " ") {
+
+    //         }
+                
+    //     }   
+    // }
+
+    // public void ParentThee() {
+    //     if (dad.getFirst() == null || dad == null) {
+    //         return;
+    //     }
+
+    //     if ((name.getThee() == null || name.getThee() == "") && dad.getFirst() == "Лев") {
+    //         this.name.setThee("Львович");
+    //     }
+
+    //     if (name.getThee() == null || name.getThee() == "") {
+    //         this.name.setThee(this.dad.getFirst() + "ович");
+    //     }
+    // }
+    
+}
