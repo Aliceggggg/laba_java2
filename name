@@ -1,0 +1,161 @@
+// import java.util.Objects;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Name {
+    private String secondName;
+    private String firstName;
+    private String theeName;
+
+    //Просмотр полей имени
+    public String getSecond() {
+        if (secondName == null) {
+            return "";
+        } else {
+            return secondName;
+        }
+    }
+
+    public String getFirst() {
+        if (firstName == null) {
+            return "";
+        } else {
+            return firstName;
+        }
+    }
+
+    public String getThee() {
+        if (theeName == null) {
+            return "";
+        } else {
+            return theeName;
+        }
+    }
+
+    // Установка полей имени
+    public void setSecond(String secondName) {
+        if (secondName == null || secondName == "") {
+        this.secondName = secondName;
+        } else {
+        while (check.CheckStr(secondName) == false) {
+                secondName = check.CheckString(secondName);
+        }
+        this.secondName = secondName;
+        }
+    }
+
+    public void setFirst(String firstName) {
+        if (firstName == null || firstName == "") {
+            System.out.print("Нельзя быть без имени!");
+            Scanner scanner = new Scanner(System.in);
+            String x = scanner.next();
+            x = check.CheckString(x);
+            scanner.nextLine();
+        } else {
+            while (check.CheckStr(firstName) == false) {
+                firstName = check.CheckString(firstName);
+            }
+        }
+        this.firstName = firstName;
+    }
+
+    public void setThee(String theeName) {
+    if (theeName == null || theeName == "") {
+        this.theeName = theeName;
+    } else {
+        while (check.CheckStr(theeName) == false) {
+                theeName = check.CheckString(theeName);
+        }
+        this.theeName = theeName;
+    }
+    }
+
+    public String getFullName() {
+        return String.format("%s %s %s", getSecond(), getFirst(), getThee()).trim();
+    }
+
+    public String getNewName() {
+        if (secondName == null && theeName == null) {
+            return firstName;
+        } else if (secondName != null && theeName == null) {
+            return secondName + " " + firstName;
+        } else {
+            return secondName + " " + firstName + " " + theeName;
+        }
+    }
+
+    public Name(String secondName, String firstName, String theeName) {
+        if (secondName == null || secondName == "") {
+        this.secondName = secondName;
+        } else {
+        while (check.CheckStr(secondName) == false) {
+                secondName = check.CheckString(secondName);
+        }
+        this.secondName = secondName;
+        }
+
+        if (firstName == null || firstName == "") {
+            System.out.print("Нельзя быть без имени!");
+            Scanner scanner = new Scanner(System.in);
+            String x = scanner.next();
+            x = check.CheckString(x);
+            scanner.nextLine();
+        } else {
+            while (check.CheckStr(firstName) == false) {
+                firstName = check.CheckString(firstName);
+            }
+        }
+        this.firstName = firstName;
+
+        if (theeName == null || theeName == "") {
+        this.theeName = theeName;
+        } else {
+        while (check.CheckStr(theeName) == false) {
+                theeName = check.CheckString(theeName);
+        }
+        this.theeName = theeName;
+    }
+    }
+
+    public Name(String secondName, String firstName) {
+        if (secondName == null || secondName == "") {
+        this.secondName = secondName;
+        } else {
+        while (check.CheckStr(secondName) == false) {
+                secondName = check.CheckString(secondName);
+        }
+        this.secondName = secondName;
+        }
+
+        if (firstName == null || firstName == "") {
+            System.out.print("Нельзя быть без имени!");
+            Scanner scanner = new Scanner(System.in);
+            String x = scanner.next();
+            x = check.CheckString(x);
+            scanner.nextLine();
+        } else {
+            while (check.CheckStr(firstName) == false) {
+                firstName = check.CheckString(firstName);
+            }
+        }
+        this.firstName = firstName;
+
+        this.theeName = "";
+    }
+
+    public Name(String text) {
+        List<String> arr = Arrays.asList(text.split(" "));
+
+        if (arr.size() == 1) {
+            this.firstName = check.CheckString(arr.get(0));
+        } else if (arr.size() == 2) {
+            this.secondName = check.CheckString(arr.get(0));
+            this.firstName = check.CheckString(arr.get(1));
+        } else {
+            this.secondName = check.CheckString(arr.get(0));
+            this.firstName = check.CheckString(arr.get(1));
+            this.theeName = check.CheckString(arr.get(2));
+        }
+    }
+}
