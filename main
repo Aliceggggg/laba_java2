@@ -1,0 +1,198 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            System.setOut(new java.io.PrintStream(System.out, true, "UTF-8"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+       
+        check checks = new check();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nЧто интересует: ");
+        String choice_str = scanner.next();
+        int choice = checks.CheckInt(choice_str);
+        scanner.nextLine();
+
+        switch(choice) {
+            case 1 -> {
+                // Через конструктор
+                System.out.print("\nВывод через конструктор: \n");
+                Name name1 = new Name("Клеопатра", "", "");
+                System.out.println("Имя: " + name1.getFullName());
+
+                Name name3 = new Name("Пушкин", "Александр", "Сергеевич");
+                System.out.println("Имя: " + name3.getFullName());
+
+                Name name4 = new Name("Маяковский", "Владимир", "");
+                System.out.println("Имя: " + name4.getFullName());
+        
+                // Через сеттеры
+                System.out.print("\nВывод через сеттеры: \n");
+                Name name2 = new Name("","","");
+                name2.setSecond("Клеопатра");
+                name2.setFirst("");
+                name2.setThee("");
+                System.out.println("Имя: " + name2.getFullName());
+
+                Name name5 = new Name("","","");
+                name5.setSecond("Пушкин");
+                name5.setFirst("Александр");
+                name5.setThee("Сергеевич");
+                System.out.println("Имя: " + name5.getFullName());
+
+                Name name6 = new Name("","","");
+                name6.setSecond("Маяковский");
+                name6.setFirst("Владимир");
+                name6.setThee("");
+                System.out.println("Имя: " + name6.getFullName());
+            }
+            case 2 -> {
+                Man man1 = new Man(); 
+                Name name1 = new Name("Клеопатра", "", "");
+                man1.setName(name1);     
+                man1.setHeight(152);    
+                System.out.println(man1.getInfo());  
+
+                Man man2 = new Man(); 
+                Name name2 = new Name("Пушкин", "Александр", "Сергеевич");
+                man2.setName(name2);     
+                man2.setHeight(167);    
+                System.out.println(man2.getInfo());  
+
+                Man man3 = new Man(); 
+                Name name3 = new Name("Мяковский", "Владимир", "");
+                man3.setName(name3);     
+                man3.setHeight(189);    
+                System.out.println(man3.getInfo());  
+            }
+            case 3 -> {
+                Man man3 = new Man(); 
+                Name name3 = new Name("", "Борис", "");
+                man3.setName(name3); 
+
+                Man man2 = new Man(); 
+                Name name2 = new Name("Чудов", "Петр", "");
+                man2.setName(name2);
+                man2.setDad(name3); 
+
+                Man man1 = new Man(); 
+                Name name1 = new Name("Чудов", "Иван", "");
+                man1.setName(name1);
+                man1.setDad(name2); 
+
+                man1.ParentSecond();
+                man1.ParentThee();
+                man2.ParentSecond();
+                man2.ParentThee();
+
+                System.out.println(man1.getWithDad());  
+                System.out.println(man2.getWithDad());  
+                System.out.println(man3.getWithDad());  
+            }
+            case 4 -> {
+                City A = new City();
+                Map<String,Integer> A_c = new HashMap<>();
+                A_c.put("F",1);
+                A_c.put("B",5);
+                A_c.put("D",6);
+                A.setConnect(A_c);
+                A.setCity("A");
+                A.printCity();
+
+                City B = new City();
+                B.setCity("B");
+                Map<String,Integer> B_c = new HashMap<>();
+                B_c.put("A",5);
+                B_c.put("C",3);
+                B.setConnect(B_c);
+                B.printCity();
+
+                City C = new City();
+                Map<String,Integer> C_c = new HashMap<>();
+                C_c.put("B",3);
+                C_c.put("D",4);
+                C.setConnect(C_c);
+                C.setCity("C");
+                C.printCity();
+
+                City D = new City();
+                Map<String,Integer> D_c = new HashMap<>();
+                D_c.put("A",6);
+                D_c.put("E",2);
+                D_c.put("C",4);
+                D.setConnect(D_c);
+                D.setCity("D");
+                D.printCity();
+
+                City E = new City();
+                Map<String,Integer> E_c = new HashMap<>();
+                E_c.put("F",2);
+                E.setConnect(E_c);
+                E.setCity("E");
+                E.printCity();
+
+                City F = new City();
+                Map<String,Integer> F_c = new HashMap<>();
+                F_c.put("B",1);
+                F_c.put("E",2);
+                F.setConnect(F_c);
+                F.setCity("F");
+                F.printCity();
+            }
+            case 5 -> {
+                Name name1 = new Name("Клеопатра");
+                Name name2 = new Name("Пушкин", "Александр", "Сергеевич");
+                Name name3 = new Name("Маяковский", "Владимир");
+                Name name4 = new Name("Бонифатьевич","Христофор");
+
+                System.out.print(name1.getNewName() + "\n");
+                System.out.print(name2.getNewName() + "\n");
+                System.out.print(name3.getNewName() + "\n");
+                System.out.print(name4.getNewName() + "\n");
+            }
+            case 6 -> {
+                // Пункт 1 + 6
+                Man man0 = new Man("Кузя",170);
+                System.out.print(man0.getInfo2());
+
+                // Пункт 3 + (1.)
+                String name1 = "Лев";
+                Man man1 = new Man(name1, 170);
+                System.out.print("\n" + man1.getInfo());
+
+                // Пункт 4 + (2.)
+                String name2 = "Пушкин Сергей";
+                Name dad1 = new Name("Лев");
+                Man man2 = new Man(name2, 170, dad1);
+                System.out.print("\n" + man2.getInfoWithDad());
+
+                // Пункт 5 + (2.)
+                Man dad2 = new Man("Лев");
+                Man man3 = new Man(name2, 170, dad2);
+                System.out.print("\n" + man3.getInfoWithDad());
+
+                // (3.)
+                Man man4 = new Man("Александр",167, man2);
+                System.out.print("\n" + man4.getInfoWithDad());
+            }
+            case 7 -> {
+                Cat cat1 = new Cat("Барсик");
+
+                System.out.print(cat1.meow());
+
+                int n;
+                System.out.print("\nСколько раз мяукнуть Барсику теперь?: ");
+                String n_str = scanner.next();
+                n = check.CheckInt(n_str);
+                scanner.nextLine();
+                System.out.print("\n" + cat1.meowCount(n));
+            }
+        }
+    }
+}
