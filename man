@@ -35,6 +35,10 @@ public class Man {
         ParentSecond();
     }
 
+    public String toString() {
+        return String.format("%s, %d", name.getFullName(), height);
+    }
+
     public Name getName() { 
         return name; 
     }
